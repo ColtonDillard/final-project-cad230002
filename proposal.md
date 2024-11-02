@@ -40,6 +40,6 @@ Minimal Viable Outcome:
   1. Modify shadow into another feature
   2. Modify shadow into third feature
 
-- Week N (Final)
+- Week 4 (Final)
   1. Animate process
   2. Optimize code
