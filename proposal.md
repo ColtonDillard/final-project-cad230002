@@ -1,7 +1,7 @@
 # Shadow Forge
 
 ## Repository
-<Link https://github.com/ColtonDillard/final-project-cad230002.git>
+<https://github.com/ColtonDillard/final-project-cad230002.git>
 
 ## Description
 This program will take an image and detect its shadows, which will then be utilized in a variety of ways to create stylized versions of that image. Artists will be able to better visualize the contrast within their image as well as quickly generate cool art.
