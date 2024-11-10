@@ -7,17 +7,18 @@ class ShadowForge():
             img_gray = img.copy()
             img_gray = img.convert('L')
             img_gray.show()
+        return img_gray
     
 
-    def FindShadows(self, img):
-        img_shadow = img.copy()
-        for y in range(img.height):
-            for x in range(img.width):
-                pix = img.getpixel((x,y))
+    def FindShadows(self, img_gray):
+        img_shadow = Image.new('RGB', (img_gray.width, img_gray.height), (255,255,255,255))
+        for y in range(img_gray.height):
+            for x in range(img_gray.width):
+                pix = img_gray.getpixel((x,y))
                 if pix <= 105:
                     img_shadow.putpixel((x,y), (0,0,255,255))
-                else:
-                    img_shadow.putpixel((x,y), (255,255,255,255))
+
+        img_shadow.show()
     
 
 def main():
