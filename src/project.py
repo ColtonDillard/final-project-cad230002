@@ -19,6 +19,17 @@ class ShadowForge():
                     img_shadow.putpixel((x,y), (0,0,255,255))
 
         img_shadow.show()
+        return img_shadow
+    
+    def OutlineImage(self, img_shadow):
+        img_outline = Image.new('RGB', (img_shadow.width, img_shadow.height), (255,255,255,255))
+        for y in range(img_shadow.height):
+            for x in range(img_shadow.width):
+                pix = img_shadow.getpixel((x,y))
+                adjacent_pixels = [(x-1, y),(x+1, y),(x,y+1),(x,y-1)]
+                if pix is (255,255,255,255):
+                    for dot in adjacent_pixels:
+                        if img_shadow.getpixel(dot) == (0,0,255,255):
     
 
 def main():
