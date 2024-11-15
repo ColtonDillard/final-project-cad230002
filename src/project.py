@@ -34,6 +34,9 @@ class ShadowForge():
                         #Checks if adjacent pixels are blue
                         if img_shadow.getpixel(dot) == (0,0,255,255):
                             img_outline.putpixel((x,y), (0,0,0,255))
+                            break
+
+        return img_outline
     
 
 def main():
