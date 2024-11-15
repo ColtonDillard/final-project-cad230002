@@ -27,9 +27,13 @@ class ShadowForge():
             for x in range(img_shadow.width):
                 pix = img_shadow.getpixel((x,y))
                 adjacent_pixels = [(x-1, y),(x+1, y),(x,y+1),(x,y-1)]
+                #Checks if the pixel is white
                 if pix is (255,255,255,255):
+                #Loops through all adjacent pixels
                     for dot in adjacent_pixels:
+                        #Checks if adjacent pixels are blue
                         if img_shadow.getpixel(dot) == (0,0,255,255):
+                            img_outline.putpixel((x,y), (0,0,0,255))
     
 
 def main():
