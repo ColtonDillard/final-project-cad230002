@@ -28,14 +28,15 @@ class ShadowForge():
                 pix = img_shadow.getpixel((x,y))
                 adjacent_pixels = [(x-1, y),(x+1, y),(x,y+1),(x,y-1)]
                 #Checks if the pixel is white
-                if pix is (255,255,255,255):
+                if pix == (255,255,255,255):
                 #Loops through all adjacent pixels
                     for dot in adjacent_pixels:
                         #Checks if adjacent pixels are blue
                         if img_shadow.getpixel(dot) == (0,0,255,255):
-                            img_outline.putpixel((x,y), (0,0,0,255))
+                            img_outline.putpixel((x,y), (0,0,0))
                             break
 
+        img_outline.show()
         return img_outline
     
 
@@ -43,7 +44,8 @@ def main():
     sf = ShadowForge()
     #img = sf.GetGrayscale()
     img_gray = sf.GetGrayscale()
-    sf.FindShadows(img_gray)
+    img_shadow = sf.FindShadows(img_gray)
+    img_outline = sf.OutlineImage(img_shadow)
     
 
 if __name__ == "__main__":
