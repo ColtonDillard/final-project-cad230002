@@ -1,4 +1,5 @@
 from PIL import Image
+from appJar import gui
 
 class ShadowForge():
 
@@ -34,7 +35,7 @@ class ShadowForge():
                         nx,ny=dot
                         if 0 <= nx < img_shadow.width and 0 <= ny < img_shadow.height:
                         #Checks if adjacent pixels are blue
-                            if img_shadow.getpixel(dot) == (0,0,255,255):
+                            if img_shadow.getpixel(dot) == (0,0,255):
                                 img_outline.putpixel((x,y), (0,0,0,255))
                                 break
 
