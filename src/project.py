@@ -1,5 +1,5 @@
 from PIL import Image
-from appJar import gui
+#from appJar import gui
 
 class ShadowForge():
 
@@ -41,6 +41,15 @@ class ShadowForge():
 
         img_outline.show()
         return img_outline
+    
+    def RandomColorFilling(self, img_shadow):
+        img_colors = Image.new('RGB', (img_shadow.width, img_shadow.height), (255,255,255,255))
+        for y in range(img_shadow.height):
+            for x in range(img_shadow.width):
+                #Runs through all of the pixels to find out if they are blue
+                color = img_shadow.getpixel((x,y))
+                if color == (0,0,255):
+                    
     
 
 def main():
