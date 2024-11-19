@@ -50,9 +50,9 @@ class ShadowForge():
             for x in range(img_shadow.width):
                 #Runs through all of the pixels to find out if they are blue
                 color = img_shadow.getpixel((x,y))
-                fill = pygame.Color(random.randrange(0,255), random.randrange(0,255), random.randrange(0,255))
                 if color == (0,0,255):
-                    
+                    #assigns random assortment of colors to fill blue pixels
+                    img_colors.putpixel(pygame.Color(random.randrange(0,255), random.randrange(0,255), random.randrange(0,255)))
     
 
 def main():
@@ -61,6 +61,7 @@ def main():
     img_gray = sf.GetGrayscale()
     img_shadow = sf.FindShadows(img_gray)
     img_outline = sf.OutlineImage(img_shadow)
+    img_colors = sf.RandomColorFilling(img_shadow)
     
 
 if __name__ == "__main__":
