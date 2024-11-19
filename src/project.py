@@ -62,7 +62,7 @@ def main():
     #img = sf.GetGrayscale()
     img_gray = sf.GetGrayscale()
     img_shadow = sf.FindShadows(img_gray)
-    #img_outline = sf.OutlineImage(img_shadow)
+    img_outline = sf.OutlineImage(img_shadow)
     img_colors = sf.RandomColorFilling(img_shadow)
     
 
