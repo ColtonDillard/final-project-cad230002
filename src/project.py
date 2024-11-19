@@ -1,4 +1,5 @@
 from PIL import Image
+import random
 #from appJar import gui
 
 class ShadowForge():
@@ -49,7 +50,7 @@ class ShadowForge():
                 #Runs through all of the pixels to find out if they are blue
                 color = img_shadow.getpixel((x,y))
                 if color == (0,0,255):
-                    
+
     
 
 def main():
