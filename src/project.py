@@ -1,4 +1,5 @@
 from PIL import Image
+import pygame
 import random
 #from appJar import gui
 
@@ -49,8 +50,9 @@ class ShadowForge():
             for x in range(img_shadow.width):
                 #Runs through all of the pixels to find out if they are blue
                 color = img_shadow.getpixel((x,y))
+                fill = pygame.Color(random.randrange(0,255), random.randrange(0,255), random.randrange(0,255))
                 if color == (0,0,255):
-
+                    
     
 
 def main():
