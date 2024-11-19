@@ -5,7 +5,7 @@ import random
 class ShadowForge():
 
     def GetGrayscale(self):
-        with Image.open('test.png') as img:
+        with Image.open('Face.png') as img:
             img_gray = img.copy()
             img_gray = img.convert('L')
             img_gray.show()
