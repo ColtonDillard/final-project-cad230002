@@ -43,7 +43,7 @@ class ShadowForge():
         img_outline.show()
         return img_outline
     
-    def RandomColorFilling(self, img_shadow):
+    def MosaicFilling(self, img_shadow):
         img_colors = Image.new('RGB', (img_shadow.width, img_shadow.height), (255,255,255,255))
         for y in range(img_shadow.height):
             for x in range(img_shadow.width):
@@ -66,7 +66,7 @@ def main():
     # img_gray = sf.GetGrayscale()
     # img_shadow = sf.FindShadows(img_gray)
     # img_outline = sf.OutlineImage(img_shadow)
-    # img_colors = sf.RandomColorFilling(img_shadow)
+    # img_colors = sf.MosaicFilling(img_shadow)
     
 
     #Import gui
