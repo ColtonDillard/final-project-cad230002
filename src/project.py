@@ -74,7 +74,7 @@ def press(button, app):
         app.setLabel("currpath", f"Current File {app.getEntry("image_file")}")
 
 def show(button):
-    if button == "Grayscale":
+    if button == "Greyscale":
         global greyscale_img
         greyscale_img.show()
     if button == "Shadow":
@@ -89,16 +89,9 @@ def show(button):
 
 
 def main():
-    sf = ShadowForge()
-    # img = sf.GetGrayscale()
-    # img_gray = sf.GetGrayscale()
-    # img_shadow = sf.FindShadows(img_gray)
-    # img_outline = sf.OutlineImage(img_shadow)
-    # img_mosaic = sf.MosaicFilling(img_shadow)
-    
 
     #Import gui
-    app = gui("Shadow Forge", "400x200")
+    app = gui("Shadow Forge", "800x500")
 
     app.addLabel("Shadow Forge", "Welcome to Shadow Forge")
     app.setLabelBg("Shadow Forge", "yellow")
