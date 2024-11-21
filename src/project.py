@@ -1,6 +1,6 @@
 from PIL import Image
 import random
-#from appJar import gui
+from appJar import gui
 
 class ShadowForge():
 
@@ -56,6 +56,9 @@ class ShadowForge():
         img_colors.show()
         return img_colors
     
+def press(button, app):
+    if button == "Cancel":
+        app.stop()
 
 def main():
     sf = ShadowForge()
@@ -65,6 +68,15 @@ def main():
     img_outline = sf.OutlineImage(img_shadow)
     img_colors = sf.RandomColorFilling(img_shadow)
     
+
+    #Import gui
+    app = gui()
+    app.addLabel("Shadow Forge", "Welcome to Shadow Forge")
+    app.setLabelBg("Shadow Forge", "blue")
+
+    
+    app.go()
+
 
 if __name__ == "__main__":
     main()
