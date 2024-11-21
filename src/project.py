@@ -70,15 +70,16 @@ def main():
     
 
     #Import gui
-    app = gui()
+    app = gui("Shadow Forge", "400x200")
     app.addLabel("Shadow Forge", "Welcome to Shadow Forge")
-    app.setLabelBg("Shadow Forge", "red")
+    app.setLabelBg("Shadow Forge", "yellow")
     app.addButtons(["Cancel"], lambda btn: press(btn, app))
-
+    #adds buttons to gui
+    app.addButtons(["Shadow", "Greyscale", "Outline", "Mosaic"], lambda btn: press(btn, app))
     # upload button
 
     # greyscale button
-    app.addButtons(["Shadow", "Greyscale", "Outline", "Mosaic"], lambda btn: press(btn, app))
+    
 
     # shadow button
 
