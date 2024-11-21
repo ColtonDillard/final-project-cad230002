@@ -8,7 +8,6 @@ class ShadowForge():
         with Image.open(path) as img:
             img_gray = img.copy()
             img_gray = img.convert('L')
-            img_gray.show()
         return img_gray
     
 
@@ -75,7 +74,19 @@ def press(button, app):
         app.setLabel("currpath", f"Current File {app.getEntry("image_file")}")
 
 def show(button):
-    print()
+    if button == "Grayscale":
+        global greyscale_img
+        greyscale_img.show()
+    if button == "Shadow":
+        global shadow_img
+        shadow_img.show()
+    if button == "Outline":
+        global outline_img
+        outline_img.show()
+    if button == "Mosaic":
+        global mosaic_img
+        mosaic_img.show()
+
 
 def main():
     sf = ShadowForge()
