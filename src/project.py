@@ -4,23 +4,22 @@ from appJar import gui
 
 class ShadowForge():
 
-    def GetGrayscale(self):
-        with Image.open('Face.png') as img:
+    def GetGrayscale(self, path):
+        with Image.open(path) as img:
             img_gray = img.copy()
             img_gray = img.convert('L')
             img_gray.show()
         return img_gray
     
 
-    def FindShadows(self, img_gray):
+    def FindShadows(self, img_gray, thresh):
         img_shadow = Image.new('RGB', (img_gray.width, img_gray.height), (255,255,255,255))
         for y in range(img_gray.height):
             for x in range(img_gray.width):
                 pix = img_gray.getpixel((x,y))
-                if pix <= 105:
+                if pix <= thresh:
                     img_shadow.putpixel((x,y), (0,0,255,255))
 
-        img_shadow.show()
         return img_shadow
     
     def OutlineImage(self, img_shadow):
@@ -40,25 +39,43 @@ class ShadowForge():
                                 img_outline.putpixel((x,y), (0,0,0,255))
                                 break
 
-        img_outline.show()
         return img_outline
     
     def MosaicFilling(self, img_shadow):
-        img_colors = Image.new('RGB', (img_shadow.width, img_shadow.height), (255,255,255,255))
+        img_mosaic = Image.new('RGB', (img_shadow.width, img_shadow.height), (255,255,255,255))
         for y in range(img_shadow.height):
             for x in range(img_shadow.width):
                 #Runs through all of the pixels to find out if they are blue
                 color = img_shadow.getpixel((x,y))
                 if color == (0,0,255):
                     #assigns random assortment of colors to fill blue pixels
-                    img_colors.putpixel((x,y),(random.randrange(0,255), random.randrange(0,255), random.randrange(0,255), 255))
+                    img_mosaic.putpixel((x,y),(random.randrange(0,255), random.randrange(0,255), random.randrange(0,255), 255))
 
-        img_colors.show()
-        return img_colors
+        return img_mosaic
+    
+greyscale_img = None
+shadow_img = None
+outline_img = None
+mosaic_img = None
     
 def press(button, app):
-    if button == "Cancel":
+    if button == "Close":
         app.stop()
+    if button == "Upload":
+        sf = ShadowForge()
+        global greyscale_img
+        global shadow_img
+        global outline_img
+        global mosaic_img
+        greyscale_img = sf.GetGrayscale(app.getEntry("image_file"))
+        shadow_img = sf.FindShadows(greyscale_img, app.getScale("Shadow Threshold"))
+        outline_img = sf.OutlineImage(shadow_img)
+        mosaic_img = sf.MosaicFilling(shadow_img)
+
+        app.setLabel("currpath", f"Current File {app.getEntry("image_file")}")
+
+def show(button):
+    print()
 
 def main():
     sf = ShadowForge()
@@ -66,29 +83,28 @@ def main():
     # img_gray = sf.GetGrayscale()
     # img_shadow = sf.FindShadows(img_gray)
     # img_outline = sf.OutlineImage(img_shadow)
-    # img_colors = sf.MosaicFilling(img_shadow)
+    # img_mosaic = sf.MosaicFilling(img_shadow)
     
 
     #Import gui
     app = gui("Shadow Forge", "400x200")
+
     app.addLabel("Shadow Forge", "Welcome to Shadow Forge")
     app.setLabelBg("Shadow Forge", "yellow")
-    app.addButtons(["Cancel"], lambda btn: press(btn, app))
-    #adds buttons to gui
-    app.addButtons(["Shadow", "Greyscale", "Outline", "Mosaic"], lambda btn: press(btn, app))
-    # upload button
 
-    # greyscale button
-    
+    app.addLabel("currpath", "Current File: None")
 
-    # shadow button
+    app.addFileEntry("image_file")
 
-    # outline button
+    app.addButtons(["Upload", "Close"], lambda btn: press(btn, app))
 
-    # mosaic button
+    #adds image buttons to gui
+    app.addButtons(["Shadow", "Greyscale", "Outline", "Mosaic"], show)
 
-    # greyscale input
-    
+    app.addLabelScale("Shadow Threshold")
+    app.showScaleValue("Shadow Threshold", show=True)
+    app.setScaleRange("Shadow Threshold", 0, 255, curr=105)
+
     app.go()
 
 
