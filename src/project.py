@@ -52,7 +52,6 @@ class ShadowForge():
                 if color == (0,0,255):
                     #assigns random assortment of colors to fill blue pixels
                     img_colors.putpixel((x,y),(random.randrange(0,255), random.randrange(0,255), random.randrange(0,255), 255))
-                    img_colors.size=20
 
         img_colors.show()
         return img_colors
