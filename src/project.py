@@ -74,6 +74,18 @@ def main():
     app.addLabel("Shadow Forge", "Welcome to Shadow Forge")
     app.setLabelBg("Shadow Forge", "red")
     app.addButtons(["Submit", "Cancel"], lambda btn: press(btn, app))
+
+    # upload button
+
+    # greyscale button
+
+    # shadow button
+
+    # outline button
+
+    # mosaic button
+
+    # greyscale input
     
     app.go()
 
